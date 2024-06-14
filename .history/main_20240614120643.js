@@ -30,7 +30,7 @@ function createWindow () {
     win.webContents.send('dirname', __dirname);
   });
 
-
+  
   const instructionsWin = new BrowserWindow({
     width: 400,
     height: 300,

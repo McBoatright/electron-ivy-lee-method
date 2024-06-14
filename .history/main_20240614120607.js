@@ -30,13 +30,13 @@ function createWindow () {
     win.webContents.send('dirname', __dirname);
   });
 
-
+  // Create a new window for the instructions
   const instructionsWin = new BrowserWindow({
     width: 400,
     height: 300,
-    parent: win, 
-    modal: true, 
-    show: false, 
+    parent: win, // make the main window the parent of this window
+    modal: true, // make this window modal - it will prevent interaction with the parent window
+    show: false, // don't show the window immediately
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false, 
