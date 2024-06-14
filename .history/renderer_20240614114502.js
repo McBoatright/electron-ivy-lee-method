@@ -169,11 +169,13 @@ async function deleteNote(index) {
 window.onload = () => {
     const dateInput = document.getElementById('date-input');
     
+    // Load the date from localStorage when the window loads
     const savedDate = localStorage.getItem('date');
     if (savedDate) {
       dateInput.value = savedDate;
     }
   
+    // Save the date to localStorage whenever it changes
     dateInput.addEventListener('change', () => {
       localStorage.setItem('date', dateInput.value);
     });

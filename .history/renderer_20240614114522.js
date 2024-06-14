@@ -169,6 +169,7 @@ async function deleteNote(index) {
 window.onload = () => {
     const dateInput = document.getElementById('date-input');
     
+    // Load the date from localStorage when the window loads
     const savedDate = localStorage.getItem('date');
     if (savedDate) {
       dateInput.value = savedDate;
