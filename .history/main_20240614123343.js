@@ -18,7 +18,7 @@ function createWindow () {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
-    title: "The Ivy Lee Method",
+    title:"The Ivy Lee Method"
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false, 
