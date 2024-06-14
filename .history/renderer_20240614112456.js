@@ -31,17 +31,13 @@ noteForm.addEventListener('submit', (e) => {
 
 async function addTask(task) {
     const tasks = await getTasks();
-    if (tasks.length < 6) {
-        tasks.push(task);
-        if (currentPath) { // Check if currentPath is defined
-            const filePath = await ipcRenderer.invoke('join-path', currentPath, 'db.json');
-            await ipcRenderer.invoke('write-file', filePath, JSON.stringify(tasks));
-            displayTasks();
-        } else {
-            console.error('currentPath is undefined');
-        }
+    tasks.push(task);
+    if (currentPath) { // Check if currentPath is defined
+        const filePath = await ipcRenderer.invoke('join-path', currentPath, 'db.json');
+        await ipcRenderer.invoke('write-file', filePath, JSON.stringify(tasks));
+        displayTasks();
     } else {
-        alert('You have reached the maximum number of tasks (6).');
+        console.error('currentPath is undefined');
     }
 }
 

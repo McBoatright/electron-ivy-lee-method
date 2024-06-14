@@ -1,3 +1,4 @@
+// In your main.js
 const { app, BrowserWindow, ipcMain } = require('electron');
 const fs = require('fs');
 const path = require('path');
@@ -20,12 +21,13 @@ function createWindow () {
     height: 600,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false, 
+      contextIsolation: false, // Also set this to false
     }
   })
 
   win.loadFile('index.html');
 
+  // Add this line to send __dirname to the renderer process
   win.webContents.on('did-finish-load', () => {
     win.webContents.send('dirname', __dirname);
   });

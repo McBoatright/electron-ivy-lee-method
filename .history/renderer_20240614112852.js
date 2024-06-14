@@ -29,7 +29,7 @@ noteForm.addEventListener('submit', (e) => {
     addNote(newNote);
 });
 
-async function addTask(task) {
+aasync function addTask(task) {
     const tasks = await getTasks();
     if (tasks.length < 6) {
         tasks.push(task);
@@ -41,7 +41,7 @@ async function addTask(task) {
             console.error('currentPath is undefined');
         }
     } else {
-        alert('You have reached the maximum number of tasks (6).');
+        alert('You have reached the maximum number of tasks (6). Please complete or delete a task before adding a new one.');
     }
 }
 
