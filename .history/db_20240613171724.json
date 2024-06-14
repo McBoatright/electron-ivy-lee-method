@@ -1,0 +1,9 @@
+function getTasks() {
+    let tasks;
+    try {
+        tasks = JSON.parse(fs.readFileSync(path.join(__dirname, 'db.json')));
+    } catch (error) {
+        tasks = [];
+    }
+    return tasks;
+}
