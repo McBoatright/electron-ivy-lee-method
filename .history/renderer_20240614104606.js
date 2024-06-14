@@ -12,22 +12,11 @@ const taskForm = document.getElementById('task-form');
 const taskInput = document.getElementById('task-input');
 const tasksDiv = document.getElementById('tasks');
 
-const noteForm = document.getElementById('note-form');
-const noteInput = document.getElementById('note-input');
-const notesDiv = document.getElementById('notes');
-
 taskForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const newTask = taskInput.value;
     taskInput.value = '';
     addTask(newTask);
-});
-
-noteForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const newNote = noteInput.value;
-    noteInput.value = '';
-    addNote(newNote);
 });
 
 async function addTask(task) {

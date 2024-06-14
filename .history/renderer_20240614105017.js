@@ -15,6 +15,7 @@ const tasksDiv = document.getElementById('tasks');
 const noteForm = document.getElementById('note-form');
 const noteInput = document.getElementById('note-input');
 const notesDiv = document.getElementById('notes');
+notesDiv.classList.add('half-window');
 
 taskForm.addEventListener('submit', (e) => {
     e.preventDefault();

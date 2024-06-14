@@ -1,0 +1,7 @@
+<link rel="stylesheet" type="text/css" href="styles.css">
+
+#notes-section {
+    position: absolute;
+    bottom: 25%;
+    width: 100%;
+  }

@@ -1,0 +1,10 @@
+#notesContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+#notes {
+  align-self: center;
+}

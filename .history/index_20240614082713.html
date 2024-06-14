@@ -1,23 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
 <body>
     <form id="task-form">
         <input type="text" id="task-input" placeholder="New task">
         <button type="submit">Add Task</button>
     </form>
     <div id="tasks"></div>
-
-    <div id="notesContainer">
-        <form id="note-form">
-            <textarea id="note-input" placeholder="New note"></textarea>
-            <button type="submit">Add Note</button>
-        </form>
+    <div id="notes-section">
+        <h2>Notes</h2>
+        <textarea id="note-input" rows="4" cols="50"></textarea>
+        <button id="save-note">Save Note</button>
         <div id="notes"></div>
     </div>
-
     <script src="renderer.js"></script>
 </body>
 </html>
