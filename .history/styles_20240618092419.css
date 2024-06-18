@@ -1,0 +1,37 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Added this */
+  align-items: center; /* Changed from flex-start to center */
+  height: 100vh;
+  margin: 0;
+  background-color: #ebeca3da;
+}
+
+.header {
+  display: flex;
+  justify-content: center; /* Changed from space-between to center */
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Added this */
+  align-items: center; /* Changed from flex-start to center */
+}
+
+.tasks {
+  /* Your tasks CSS */
+}
+
+.notes {
+  /* Your notes CSS */
+}
+
+#notesContainer {
+  position: relative; /* Changed from absolute to relative */
+  top: 0; /* Changed from 50% to 0 */
+  left: 0;
+  transform: none; /* Removed the translateY transform */
+}

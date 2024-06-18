@@ -1,0 +1,49 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #ebeca3da;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: auto; /* Changed from 100% to auto */
+}
+
+#date-input {
+  width: 100px; /* Adjust as needed */
+  height: 30px; /* Adjust as needed */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tasks {
+  /* Your tasks CSS */
+}
+
+.notes {
+  /* Your notes CSS */
+}
+
+#notesContainer {
+  position: relative; /* Changed from absolute to relative */
+  top: 0; /* Changed from 50% to 0 */
+  left: 0;
+  transform: none; /* Removed the translateY transform */
+}

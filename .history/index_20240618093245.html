@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="header-container">
+        <h1>Tomorrow</h1> <input type="date" id="date-input">
+    </div>
+    <div class="container">
+        <div class="tasks">
+            <form id="task-form">
+                <input type="text" id="task-input" placeholder="New task">
+                <button type="submit">Add Task</button>
+            </form>
+            <div id="tasks"></div>
+        </div>
+        <div class="notes">
+            <div id="notesContainer">
+                <form id="note-form">
+                    <textarea id="note-input" placeholder="New note"></textarea>
+                    <button type="submit">Add Note</button>
+                </form>
+                <div id="notes"></div>
+            </div>
+        </div>
+    </div>
+    <script src="renderer.js"></script>
+</body>
+</html>

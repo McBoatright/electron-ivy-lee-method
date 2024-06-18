@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.tasks {
+  /* Your tasks CSS */
+}
+
+.notes {
+  /* Your notes CSS */
+}
+
+bbody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0b0;
+}
+
+#notesContainer {
+  position: relative; /* Changed from absolute to relative */
+  top: 0; /* Changed from 50% to 0 */
+  left: 0;
+  transform: none; /* Removed the translateY transform */
+}

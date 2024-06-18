@@ -1,0 +1,65 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #ebeca3da;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: auto; /* Changed from 100% to auto */
+}
+
+#date-input {
+  width: 100px; 
+  height: 30px; 
+  margin-left: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tasks {
+  /* Your tasks CSS */
+}
+
+.notes {
+  /* Your notes CSS */
+}
+
+#notesContainer {
+  position: relative; /* Changed from absolute to relative */
+  top: 0; /* Changed from 50% to 0 */
+  left: 0;
+  transform: none; /* Removed the translateY transform */
+}
+
+.delete-button {
+  margin-left: 10px; /* Adjust as needed */
+}
+
+.delete-button i {
+  font-size: 16px; /* Adjust as needed */
+  color: rgb(8, 2, 2); /* Adjust as needed */
+}
+
+#date-input,
+#task-input,
+#note-input {
+    background-color: #75fddbe7; /* Change this to your desired color */
+}
