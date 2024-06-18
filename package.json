@@ -12,8 +12,10 @@
   "dependencies": {
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
-    "electron": "^31.0.1",
     "express": "^4.19.2",
     "fs": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "electron": "^31.0.1"
   }
 }

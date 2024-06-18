@@ -77,3 +77,21 @@
 2024-06-18 08:18:41 info: Embold extension version response:{"hasSupport":false,"version":"0.1.6","changeNotes":"<div> <p>Release Date: 09 Oct, 2023 <br><span>Bug fixes and improvements.</span></p> </div>"}
 2024-06-18 08:18:41 info: Current installed embold extension version : 0.1.8
 2024-06-18 08:18:41 info: Latest embold extension version on marketplace : 0.1.6
+2024-06-18 13:05:55 info: Row(s) deleted
+2024-06-18 13:06:12 info: Row(s) deleted
+2024-06-18 13:11:45 info: Row(s) deleted
+2024-06-18 13:16:06 info: Congratulations, your extension "Embold" is now active!
+2024-06-18 13:16:06 info: tempDirectory : /home/michael/.vscode/extensions/embold-vscode.embold-0.1.8/temp
+2024-06-18 13:16:07 info: Extraction complete for source: /home/michael/.vscode/extensions/embold-vscode.embold-0.1.8/resources/embold-scanner-archive.zip, destination: /home/michael/.vscode/extensions/embold-vscode.embold-0.1.8/temp
+2024-06-18 13:16:07 info: Extension installed on machine OS : linux
+2024-06-18 13:16:07 info: Fetched the issues from DB
+2024-06-18 13:16:07 error: ERROR checking java version : Error: Command failed: java -version
+/bin/sh: 1: java: not found
+
+2024-06-18 13:16:07 info: Java version installed on machine : 
+/bin/sh: 1: java: not found
+
+2024-06-18 13:16:07 info: Java installed on machine.
+2024-06-18 13:16:08 info: Embold extension version response:{"hasSupport":false,"version":"0.1.6","changeNotes":"<div> <p>Release Date: 09 Oct, 2023 <br><span>Bug fixes and improvements.</span></p> </div>"}
+2024-06-18 13:16:08 info: Current installed embold extension version : 0.1.8
+2024-06-18 13:16:08 info: Latest embold extension version on marketplace : 0.1.6
