@@ -88,9 +88,12 @@ async function displayTasks() {
     });
 }
 
-async function deleteTask(index) {
+async function deleteTask(taskContent) {
     let tasks = await getTasks();
-    tasks.splice(index, 1);
+    const index = tasks.indexOf(taskContent);
+    if (index > -1) {
+        tasks.splice(index, 1);
+    }
     if (currentPath) { // Check if currentPath is defined
         const filePath = await ipcRenderer.invoke('join-path', currentPath, 'db.json');
         await ipcRenderer.invoke('write-file', filePath, JSON.stringify(tasks))

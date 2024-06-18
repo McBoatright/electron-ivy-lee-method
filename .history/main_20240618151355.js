@@ -9,8 +9,8 @@ ipcMain.handle('read-file', (event, filePath) => {
       console.error(`Failed to read file at ${filePath}:`, error);
       return '[]';
     }
-});
-
+  });
+  
 ipcMain.handle('write-file', (event, filePath, data) => fs.writeFileSync(filePath, data));
 ipcMain.handle('join-path', (event, ...args) => path.join(...args));
 
@@ -28,9 +28,9 @@ function createWindow () {
   win.loadFile('index.html');
 
   win.webContents.on('did-finish-load', () => {
-    let userDataPath = app.getPath('userData');
-    win.webContents.send('dirname', userDataPath);
+    win.webContents.send('dirname', __dirname);
   });
+
 
   const instructionsWin = new BrowserWindow({
     width: 400,
@@ -53,6 +53,7 @@ function createWindow () {
 
 app.whenReady().then(() => {
   createWindow();
+  
   
   app.on('activate', function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();

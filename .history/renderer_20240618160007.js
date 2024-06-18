@@ -45,28 +45,7 @@ async function addTask(task) {
     }
 }
 
-async function getTasks() {
-    let tasks = [];
-    if (currentPath) { // Check if currentPath is defined
-        const filePath = await ipcRenderer.invoke('join-path', currentPath, 'db.json');
-        await ipcRenderer.invoke('read-file', filePath)
-            .then(tasksJson => {
-                if (tasksJson && tasksJson !== 'undefined' && tasksJson !== undefined) {
-                    try {
-                        tasks = JSON.parse(tasksJson);
-                    } catch (error) {
-                        console.error(`Failed to parse JSON from file at ${filePath}:`, error);
-                    }
-                }
-            })
-            .catch(error => {
-                console.error(`Failed to read file at ${filePath}:`, error);
-            });
-    } else {
-        console.error('currentPath is undefined');
-    }
-    return tasks;
-}
+
 
 async function displayTasks() {
     while (!currentPath) {
@@ -92,16 +71,12 @@ async function deleteTask(index) {
     let tasks = await getTasks();
     tasks.splice(index, 1);
     if (currentPath) { // Check if currentPath is defined
-        const filePath = await ipcRenderer.invoke('join-path', currentPath, 'db.json');
-        await ipcRenderer.invoke('write-file', filePath, JSON.stringify(tasks))
-            .then(() => {
-                displayTasks(); // Only call displayTasks after the task has been deleted
-            })
-            .catch(error => {
-                console.error(`Failed to delete task at ${filePath}:`, error);
-            });
+      const filePath = await ipcRenderer.invoke('join-path', currentPath, 'db.json');
+      await ipcRenderer.invoke('write-file', filePath, JSON.stringify(tasks));
+      tasks = await getTasks(); // Update the tasks in memory
+      displayTasks();
     } else {
-        console.error('currentPath is undefined');
+      console.error('currentPath is undefined');
     }
 }
 

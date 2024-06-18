@@ -2,16 +2,26 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const fs = require('fs');
 const path = require('path');
 
+const appDataPath = path.join(app.getPath('appData'), 'electron-ivy-lee-method');
+if (!fs.existsSync(appDataPath)){
+    fs.mkdirSync(appDataPath);
+}
+
 ipcMain.handle('read-file', (event, filePath) => {
-    try {
-      return fs.readFileSync(filePath, 'utf-8');
-    } catch (error) {
-      console.error(`Failed to read file at ${filePath}:`, error);
-      return '[]';
-    }
+  const absoluteFilePath = path.join(appDataPath, filePath);
+  try {
+    return fs.readFileSync(absoluteFilePath, 'utf-8');
+  } catch (error) {
+    console.error(`Failed to read file at ${absoluteFilePath}:`, error);
+    return '[]';
+  }
 });
 
-ipcMain.handle('write-file', (event, filePath, data) => fs.writeFileSync(filePath, data));
+ipcMain.handle('write-file', (event, filePath, data) => {
+  const absoluteFilePath = path.join(appDataPath, filePath);
+  fs.writeFileSync(absoluteFilePath, data);
+});
+
 ipcMain.handle('join-path', (event, ...args) => path.join(...args));
 
 function createWindow () {
@@ -28,8 +38,7 @@ function createWindow () {
   win.loadFile('index.html');
 
   win.webContents.on('did-finish-load', () => {
-    let userDataPath = app.getPath('userData');
-    win.webContents.send('dirname', userDataPath);
+    win.webContents.send('dirname', __dirname);
   });
 
   const instructionsWin = new BrowserWindow({

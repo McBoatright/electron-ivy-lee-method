@@ -88,22 +88,30 @@ async function displayTasks() {
     });
 }
 
-async function deleteTask(index) {
-    let tasks = await getTasks();
+aasync function deleteTask(index) {
+    const tasks = await getTasks();
     tasks.splice(index, 1);
     if (currentPath) { // Check if currentPath is defined
-        const filePath = await ipcRenderer.invoke('join-path', currentPath, 'db.json');
-        await ipcRenderer.invoke('write-file', filePath, JSON.stringify(tasks))
-            .then(() => {
-                displayTasks(); // Only call displayTasks after the task has been deleted
-            })
-            .catch(error => {
-                console.error(`Failed to delete task at ${filePath}:`, error);
-            });
+      const filePath = await ipcRenderer.invoke('join-path', currentPath, 'db.json');
+      await ipcRenderer.invoke('write-file', filePath, JSON.stringify(tasks));
+      displayTasks();
     } else {
-        console.error('currentPath is undefined');
+      console.error('currentPath is undefined');
     }
-}
+  }
+  
+  async function removeTask(taskIndex) {
+      const tasks = await getTasks();
+      tasks.splice(taskIndex, 1);
+      if (currentPath) { // Check if currentPath is defined
+          const filePath = await ipcRenderer.invoke('join-path', currentPath, 'db.json');
+          await ipcRenderer.invoke('write-file', filePath, JSON.stringify(tasks));
+          displayTasks();
+      } else {
+          console.error('currentPath is undefined');
+      }
+  }
+  
 
 async function addNote(note) {
     const notes = await getNotes();

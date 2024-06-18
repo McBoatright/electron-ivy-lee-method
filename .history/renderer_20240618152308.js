@@ -1,6 +1,8 @@
-const { ipcRenderer } = require('electron');
+const { ipcRenderer, remote } = require('electron');
+const path = require('path');
 
-let currentPath;
+let appDataPath = remote.app.getPath('appData');
+let currentPath = path.join(appDataPath, 'YourAppName');
 
 // Listen for the 'dirname' message
 ipcRenderer.on('dirname', (event, dirname) => {
@@ -89,20 +91,15 @@ async function displayTasks() {
 }
 
 async function deleteTask(index) {
-    let tasks = await getTasks();
-    tasks.splice(index, 1);
-    if (currentPath) { // Check if currentPath is defined
-        const filePath = await ipcRenderer.invoke('join-path', currentPath, 'db.json');
-        await ipcRenderer.invoke('write-file', filePath, JSON.stringify(tasks))
-            .then(() => {
-                displayTasks(); // Only call displayTasks after the task has been deleted
-            })
-            .catch(error => {
-                console.error(`Failed to delete task at ${filePath}:`, error);
-            });
-    } else {
-        console.error('currentPath is undefined');
-    }
+  const tasks = await getTasks();
+  tasks.splice(index, 1);
+  if (currentPath) { // Check if currentPath is defined
+    const filePath = await ipcRenderer.invoke('join-path', currentPath, 'db.json');
+    await ipcRenderer.invoke('write-file', filePath, JSON.stringify(tasks));
+    displayTasks();
+  } else {
+    console.error('currentPath is undefined');
+  }
 }
 
 async function addNote(note) {
