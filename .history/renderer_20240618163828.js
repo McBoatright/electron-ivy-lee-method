@@ -34,12 +34,6 @@ async function addTask(task) {
         // Display the message in the UI instead of using an alert
         const messageDiv = document.getElementById('message');
         messageDiv.textContent = 'You have reached the maximum number of tasks (6).';
-
-        // Clear the message after 3 seconds
-        setTimeout(() => {
-            messageDiv.textContent = '';
-        }, 3000);
-
         return;
     }
     tasks.push(task);

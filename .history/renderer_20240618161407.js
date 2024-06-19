@@ -1,6 +1,7 @@
 const { ipcRenderer } = require('electron');
 
-let currentPath = '/home/michael/electron-ivy-lee-method';
+let currentPath;
+
 // Listen for the 'dirname' message
 ipcRenderer.on('dirname', (event, dirname) => {
   currentPath = dirname;
@@ -30,25 +31,17 @@ noteForm.addEventListener('submit', (e) => {
 
 async function addTask(task) {
     const tasks = await getTasks();
-    if (tasks.length >= 6) {
-        // Display the message in the UI instead of using an alert
-        const messageDiv = document.getElementById('message');
-        messageDiv.textContent = 'You have reached the maximum number of tasks (6).';
-
-        // Clear the message after 3 seconds
-        setTimeout(() => {
-            messageDiv.textContent = '';
-        }, 3000);
-
-        return;
-    }
-    tasks.push(task);
-    if (currentPath) { // Check if currentPath is defined
-        const filePath = await ipcRenderer.invoke('join-path', currentPath, 'db.json');
-        await ipcRenderer.invoke('write-file', filePath, JSON.stringify(tasks));
-        displayTasks();
+    if (tasks.length < 6) {
+        tasks.push(task);
+        if (currentPath) { // Check if currentPath is defined
+            const filePath = await ipcRenderer.invoke('join-path', currentPath, 'db.json');
+            await ipcRenderer.invoke('write-file', filePath, JSON.stringify(tasks));
+            displayTasks();
+        } else {
+            console.error('currentPath is undefined');
+        }
     } else {
-        console.error('currentPath is undefined');
+        alert('You have reached the maximum number of tasks (6).');
     }
 }
 
@@ -92,25 +85,7 @@ async function displayTasks() {
     });
 }
 
-async function deleteTask(taskContent) {
-    let tasks = await getTasks();
-    const index = tasks.indexOf(taskContent);
-    if (index > -1) {
-        tasks.splice(index, 1);
-    }
-    if (currentPath) { // Check if currentPath is defined
-        const filePath = await ipcRenderer.invoke('join-path', currentPath, 'db.json');
-        await ipcRenderer.invoke('write-file', filePath, JSON.stringify(tasks))
-            .then(() => {
-                displayTasks(); // Update the tasks display after a task is deleted
-            })
-            .catch(error => {
-                console.error(`Failed to write file at ${filePath}:`, error);
-            });
-    } else {
-        console.error('currentPath is undefined');
-    }
-}
+
 
 async function addNote(note) {
     const notes = await getNotes();

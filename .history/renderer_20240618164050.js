@@ -28,29 +28,7 @@ noteForm.addEventListener('submit', (e) => {
     addNote(newNote);
 });
 
-async function addTask(task) {
-    const tasks = await getTasks();
-    if (tasks.length >= 6) {
-        // Display the message in the UI instead of using an alert
-        const messageDiv = document.getElementById('message');
-        messageDiv.textContent = 'You have reached the maximum number of tasks (6).';
 
-        // Clear the message after 3 seconds
-        setTimeout(() => {
-            messageDiv.textContent = '';
-        }, 3000);
-
-        return;
-    }
-    tasks.push(task);
-    if (currentPath) { // Check if currentPath is defined
-        const filePath = await ipcRenderer.invoke('join-path', currentPath, 'db.json');
-        await ipcRenderer.invoke('write-file', filePath, JSON.stringify(tasks));
-        displayTasks();
-    } else {
-        console.error('currentPath is undefined');
-    }
-}
 
 async function getTasks() {
     let tasks = [];

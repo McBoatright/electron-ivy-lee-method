@@ -31,15 +31,7 @@ noteForm.addEventListener('submit', (e) => {
 async function addTask(task) {
     const tasks = await getTasks();
     if (tasks.length >= 6) {
-        // Display the message in the UI instead of using an alert
-        const messageDiv = document.getElementById('message');
-        messageDiv.textContent = 'You have reached the maximum number of tasks (6).';
-
-        // Clear the message after 3 seconds
-        setTimeout(() => {
-            messageDiv.textContent = '';
-        }, 3000);
-
+        alert('You have reached the maximum number of tasks (6).');
         return;
     }
     tasks.push(task);
@@ -51,7 +43,6 @@ async function addTask(task) {
         console.error('currentPath is undefined');
     }
 }
-
 async function getTasks() {
     let tasks = [];
     if (currentPath) { // Check if currentPath is defined
